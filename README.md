@@ -8,7 +8,8 @@ to life after its cloud services stopped working.
 </p>
 
 If your Bulova Connect clock no longer sets itself, with the hands parked at
-12 and the LCD showing `01-01-2017 00:00:00`, this may fix it. The server
+12 and the LCD showing `01-01-2017 00:00:00` before it goes blank, this may
+fix it. The server
 pretends to be the web APIs the clock calls during a sync. You run it on
 your LAN and have your router redirect the clock's traffic to it.
 
@@ -32,8 +33,9 @@ where it is, to pick the time zone, and it finds that out over plain HTTP:
 4. `GET .../currentconditions/v1/<key>` and
    `GET .../forecasts/v1/daily/5day/<key>`: weather, once the time is set.
 
-Without a location the clock gives up and keeps retrying every 8–9 seconds,
-indefinitely.
+Without a location the clock retries every 8–9 seconds for a few minutes,
+then gives up: the LCD briefly shows `01-01-2017 00:00:00`, then goes out,
+and the hands stay at 12 o'clock.
 
 ## What the stub does
 
