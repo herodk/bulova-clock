@@ -1,0 +1,11 @@
+services:
+  bulova-stub:
+    build: .
+    image: bulova-stub
+    container_name: bulova-stub
+    # Host networking: the clock's TCP connection lands on server.py with no
+    # Docker proxy in between to re-segment replies, and the log shows the
+    # clock's real source IP.
+    network_mode: host
+    command: ["--port", "8080"]
+    restart: unless-stopped
